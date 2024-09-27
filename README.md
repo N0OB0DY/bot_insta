@@ -1,10 +1,17 @@
 # bot_insta
 
-  Aqui iremos criar um bot de automatizaçao de envio de mensagens para o instagram.
+Aqui iremos criar um bot de automatização de envio de mensagens para o Instagram.
 
-    > bot loga na conta
-    > pega uma lista de links de perfis
-    > acessa cada conta
-    > envia uma mensagem a sua escolha 
-    > passa para proxima conta  
-    > repetir o proximo para todas os links de perfis
+> Bot loga na conta  
+> Pega uma lista de links de perfis  
+> Acessa cada conta  
+> Envia uma mensagem a sua escolha  
+> Passa para a próxima conta  
+> Repetir o processo para todos os links de perfis  
+> desloga da conta
+
+
+Dividi o projeto em 3 módulos:
+- Configurações
+- Execução
+- Scraper
