@@ -46,8 +46,12 @@ def enviar_mensagem(driver, link):
             )
             not_now_button.click()
             print("Clicou no botão 'Not Now'.")
-        except TimeoutException:
-            print("Botão 'Not Now' não apareceu.")
+        except NoSuchElementException as e:
+            print(f'Elemento não encontrado: {e}')
+        except TimeoutException as e:
+            print(f'Tempo de espera esgotado: {e}')
+        except Exception as e:
+            print(f'Erro inesperado: {e}')
 
         print("Aguardando a caixa de mensagem...")
         message_box = WebDriverWait(driver, 10).until(
