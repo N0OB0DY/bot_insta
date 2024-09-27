@@ -33,7 +33,7 @@ def enviar_mensagem(driver, link):
 
     try:
         
-        print("Aguardando o botão de 'Message'...")
+        print("Clicando o botão de 'Message'...")
         message_button = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, "//div[text()='Message']"))
         )
