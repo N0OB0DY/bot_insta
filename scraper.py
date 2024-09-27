@@ -1,3 +1,4 @@
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -16,6 +17,7 @@ def setup_driver():
     return driver
 
 def login(driver):
+    
     username_input = driver.find_element(By.NAME, 'username')
     password_input = driver.find_element(By.NAME, 'password')
 
@@ -30,26 +32,35 @@ def enviar_mensagem(driver, link):
     time.sleep(random.uniform(3, 5))
 
     try:
-        print("Tentando clicar nos três pontinhos...")
-        three_dots_button = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, "//svg[@aria-label='Options']"))
-        )
-        three_dots_button.click()
-        print("Clicou nos três pontinhos.")
-
-        print("Aguardando o botão de 'Send message'...")
+        
+        print("Aguardando o botão de 'Message'...")
         message_button = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, "//button[text()='Send message']"))
+            EC.element_to_be_clickable((By.XPATH, "//div[text()='Message']"))
         )
         message_button.click()
-        print("Clicou no botão de 'Send message'.")
+        print("Clicou no botão de 'message'.")
+
+        try:
+            not_now_button = WebDriverWait(driver, 10).until(
+                EC.element_to_be_clickable((By.XPATH, "//button[text()='Not Now']"))
+            )
+            not_now_button.click()
+            print("Clicou no botão 'Not Now'.")
+        except TimeoutException:
+            print("Botão 'Not Now' não apareceu.")
 
         print("Aguardando a caixa de mensagem...")
         message_box = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.TAG_NAME, 'textarea'))
+            EC.presence_of_element_located((By.XPATH, "//div[@aria-label='Message']"))
         )
+        message_box.click()  # Clica na caixa para ativá-la
         message_box.send_keys(mensagem)
-        message_box.send_keys(Keys.RETURN)
+
+        print("Aguardando o botão 'Send'...")
+        send_button = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, "//div[text()='Send']"))
+        )
+        send_button.click()
         print(f'Mensagem enviada para {link}')
 
         time.sleep(random.uniform(3, 5))
@@ -60,3 +71,5 @@ def enviar_mensagem(driver, link):
         print(f'Tempo de espera esgotado: {e}')
     except Exception as e:
         print(f'Erro inesperado: {e}')
+
+
