@@ -1,6 +1,6 @@
 # bot_insta
 
-Aqui iremos criar um bot de automatização de envio de mensagens para o Instagram.
+Aqui tem um bot de automatização de envio de mensagens para o Instagram.
 
 > Bot loga na conta  
 > Pega uma lista de links de perfis  
